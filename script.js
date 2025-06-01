@@ -169,117 +169,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Appointment Form Handling
-document.addEventListener('DOMContentLoaded', function() {
-    const appointmentForm = document.getElementById('appointmentForm');
-    const bookingSteps = document.querySelectorAll('.booking-step');
-    const progressSteps = document.querySelectorAll('.progress-step');
-    let currentStep = 0;
-
-    // Function to validate current step
-    function validateStep(step) {
-        const currentStepElement = bookingSteps[step];
-        const requiredFields = currentStepElement.querySelectorAll('[required]');
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                isValid = false;
-                field.classList.add('error');
-            } else {
-                field.classList.remove('error');
-            }
-        });
-
-        // Special validation for service and location selection
-        if (step === 0) {
-            const serviceSelected = currentStepElement.querySelector('input[name="service"]:checked');
-            if (!serviceSelected) {
-                isValid = false;
-                showNotification('Please select a service', 'error');
-            }
-        } else if (step === 1) {
-            const locationSelected = currentStepElement.querySelector('input[name="location"]:checked');
-            if (!locationSelected) {
-                isValid = false;
-                showNotification('Please select a location', 'error');
-            }
-        }
-
-        return isValid;
-    }
-
-    // Function to show notifications
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
-    }
-
-    // Navigation buttons
-    document.querySelectorAll('.next-step').forEach(button => {
-        button.addEventListener('click', () => {
-            if (validateStep(currentStep)) {
-                bookingSteps[currentStep].style.display = 'none';
-                currentStep++;
-                bookingSteps[currentStep].style.display = 'block';
-                progressSteps[currentStep].classList.add('active');
-                progressSteps[currentStep - 1].classList.add('completed');
-            }
-        });
-    });
-
-    document.querySelectorAll('.prev-step').forEach(button => {
-        button.addEventListener('click', () => {
-            bookingSteps[currentStep].style.display = 'none';
-            currentStep--;
-            bookingSteps[currentStep].style.display = 'block';
-            progressSteps[currentStep + 1].classList.remove('active', 'completed');
-        });
-    });
-
-    // Form submission
-    appointmentForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (!validateStep(currentStep)) {
-            showNotification('Please fill in all required fields', 'error');
-            return;
-        }
-
-        // Collect form data
-        const formData = new FormData(appointmentForm);
-        const appointmentData = {
-            service: formData.get('service'),
-            location: formData.get('location'),
-            date: formData.get('date'),
-            time: formData.get('time'),
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            notes: formData.get('notes')
-        };
-
-        // Here you would typically send the data to your server
-        console.log('Appointment Data:', appointmentData);
-        
-        // Show success message
-        showNotification('Appointment booked successfully! We will contact you shortly to confirm.', 'success');
-        
-        // Reset form and return to first step
-        appointmentForm.reset();
-        currentStep = 0;
-        bookingSteps.forEach((step, index) => {
-            step.style.display = index === 0 ? 'block' : 'none';
-            progressSteps[index].classList.remove('active', 'completed');
-        });
-        progressSteps[0].classList.add('active');
-    });
-});
+// Removed duplicate event listener to consolidate form submission handling
 
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
@@ -378,13 +268,14 @@ function showNotification(message, type = 'success') {
     notification.style.transform = 'translateX(-50%)';
     notification.style.padding = '1rem 2rem';
     notification.style.borderRadius = '5px';
-    notification.style.color = 'white';
     notification.style.zIndex = '1000';
-    
+
     if (type === 'success') {
         notification.style.backgroundColor = '#4CAF50';
+        notification.style.color = 'white';
     } else {
         notification.style.backgroundColor = '#f44336';
+        notification.style.color = 'black';
     }
     
     // Remove notification after 3 seconds
@@ -642,8 +533,9 @@ class BookingSystem {
 }
 
 // Initialize booking system when the page loads
+let bookingSystem = null;
 window.addEventListener('load', () => {
-    const bookingSystem = new BookingSystem();
+    bookingSystem = new BookingSystem();
 });
 
 // About Section Animations and Interactions
@@ -1482,11 +1374,25 @@ const adminNotifications = new AdminNotificationSystem();
 // Load notification history on page load
 adminNotifications.loadNotificationHistory();
 
-// Update appointment form submission with enhanced data collection
 document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    if (!validateAppointmentForm(this)) {
+
+    // Include selectedDate and selectedTime from bookingSystem
+    const date = bookingSystem ? bookingSystem.selectedDate : null;
+    const time = bookingSystem ? bookingSystem.selectedTime : null;
+
+    // Create a data object for validation
+    const dataForValidation = {
+        name: this.name.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        service: this.service.value,
+        location: this.location.value,
+        date: date ? date.toISOString().split('T')[0] : '',
+        time: time || '',
+    };
+
+    if (!validateAppointmentForm(dataForValidation)) {
         return;
     }
 
@@ -1497,8 +1403,8 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
         phone: formData.get('phone'),
         service: formData.get('service'),
         location: formData.get('location'),
-        date: formData.get('date'),
-        time: formData.get('time'),
+        date: date ? date.toISOString().split('T')[0] : '',
+        time: time || '',
         notes: formData.get('notes'),
         preferredContactMethod: formData.get('preferredContactMethod') || 'email',
         isNewPatient: formData.get('isNewPatient') === 'yes',
@@ -1513,9 +1419,18 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
 
     // Show success message to user
     showNotification('Appointment booked successfully! We will contact you shortly.', 'success');
-    
-    // Reset form
+
+    // Reset form and return to first step
     this.reset();
+
+    // Reset booking steps UI
+    const bookingSteps = document.querySelectorAll('.booking-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    bookingSteps.forEach((step, index) => {
+        step.style.display = index === 0 ? 'block' : 'none';
+        progressSteps[index].classList.remove('active', 'completed');
+    });
+    progressSteps[0].classList.add('active');
 });
 
 // Update contact form submission with enhanced data collection
