@@ -15,7 +15,7 @@ const About = () => {
         <div className="container">
           <div className="grid grid-cols-2 align-center">
             <div className="about-hero-image">
-              <img src="/cicil.jpg" alt="Dr. Cicil Mathur" />
+              <img src="./cicil.jpg" alt="Dr. Cicil Mathur" />
             </div>
             <div className="about-content">
               <h2>Committed to Excellence in Dentistry</h2>

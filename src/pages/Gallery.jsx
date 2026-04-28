@@ -4,15 +4,15 @@ import './Gallery.css';
 const GALLERY_DATA = [
   {
     category: "Our Clinics",
-    images: ["/cicil8.jpg", "/cicil2.jpg"]
+    images: ["./cicil8.jpg", "./cicil2.jpg"]
   },
   {
     category: "Equipment & Technology",
-    images: ["/cicil10.jpg", "/cicil11.jpg"]
+    images: ["./cicil10.jpg", "./cicil11.jpg"]
   },
   {
     category: "Happy Smiles",
-    images: ["/cicil9.jpg", "/cicil12.jpg"]
+    images: ["./cicil9.jpg", "./cicil12.jpg"]
   }
 ];
 

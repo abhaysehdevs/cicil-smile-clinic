@@ -4,10 +4,10 @@ import { CheckCircle2, Star, ArrowRight, Phone } from 'lucide-react';
 import './Home.css';
 
 const HERO_IMAGES = [
-  '/cicil2.jpg',
-  '/cicil5.jpg',
-  '/cicil6.jpg',
-  '/cicil7.jpg'
+  './cicil2.jpg',
+  './cicil5.jpg',
+  './cicil6.jpg',
+  './cicil7.jpg'
 ];
 
 const Home = () => {
@@ -67,7 +67,7 @@ const Home = () => {
         <div className="container">
           <div className="grid grid-cols-2 align-center">
             <div className="about-image-wrapper">
-              <img src="/cicil.jpg" alt="Dr. Cicil Mathur" className="about-image" />
+              <img src="./cicil.jpg" alt="Dr. Cicil Mathur" className="about-image" />
               <div className="experience-badge">
                 Ex-Safdarjung Hospital Surgeon
               </div>
@@ -130,7 +130,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="why-image">
-              <img src="/cicil10.jpg" alt="Dental Care in Faridabad" style={{ borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
+              <img src="./cicil10.jpg" alt="Dental Care in Faridabad" style={{ borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
             </div>
           </div>
         </div>
