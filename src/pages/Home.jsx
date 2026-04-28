@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Star, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Star, ArrowRight, Phone } from 'lucide-react';
 import './Home.css';
 
 const HERO_IMAGES = [
