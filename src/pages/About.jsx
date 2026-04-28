@@ -14,10 +14,10 @@ const About = () => {
       <section className="section">
         <div className="container">
           <div className="grid grid-cols-2 align-center">
-            <div className="about-hero-image">
+            <div className="about-hero-image reveal stagger-1">
               <img src="./cicil.jpg" alt="Dr. Cicil Mathur" />
             </div>
-            <div className="about-content">
+            <div className="about-content reveal stagger-2">
               <h2>Committed to Excellence in Dentistry</h2>
               <div className="credentials-strip">
                 <span>BDS</span>
@@ -46,17 +46,17 @@ const About = () => {
 
       <section className="section section-grey">
         <div className="container text-center">
-          <h2 className="section-title">Core <span>Specialties</span></h2>
+          <h2 className="section-title reveal">Core <span>Specialties</span></h2>
           <div className="grid grid-cols-3" style={{ marginTop: '40px' }}>
-            <div className="specialty-card">
+            <div className="specialty-card reveal stagger-1">
               <h3>Cosmetic Dentistry</h3>
               <p>Enhancing aesthetics through veneers, laminates, and smile makeovers designed specifically for your facial structure.</p>
             </div>
-            <div className="specialty-card">
+            <div className="specialty-card reveal stagger-2">
               <h3>Implantology</h3>
               <p>State-of-the-art permanent tooth replacements that function and look exactly like natural teeth.</p>
             </div>
-            <div className="specialty-card">
+            <div className="specialty-card reveal stagger-3">
               <h3>Restorative Care</h3>
               <p>Preserving and restoring natural teeth through advanced endodontics (RCT) and high-quality crowns.</p>
             </div>
@@ -66,9 +66,9 @@ const About = () => {
 
       <section className="section">
         <div className="container timeline-container">
-          <h2 className="section-title">Education & <span>Experience</span></h2>
+          <h2 className="section-title reveal">Education & <span>Experience</span></h2>
           <div className="timeline">
-            <div className="timeline-item">
+            <div className="timeline-item reveal stagger-1">
               <div className="timeline-dot"></div>
               <div className="timeline-date">2011 – 2016</div>
               <div className="timeline-content">
@@ -76,7 +76,7 @@ const About = () => {
                 <p>Sudha Rustagi College of Dental Sciences & Research, Kheri More, Faridabad</p>
               </div>
             </div>
-            <div className="timeline-item">
+            <div className="timeline-item reveal stagger-3">
               <div className="timeline-dot"></div>
               <div className="timeline-date">July 2018 – Aug 2019</div>
               <div className="timeline-content">

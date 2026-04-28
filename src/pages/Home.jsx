@@ -43,19 +43,19 @@ const Home = () => {
       </section>
 
       {/* Trust Bar */}
-      <section className="trust-bar">
+      <section className="trust-bar reveal">
         <div className="container trust-container">
-          <div className="trust-item">
+          <div className="trust-item reveal stagger-1">
             <h3>8+</h3>
             <p>Years Experience</p>
           </div>
-          <div className="trust-divider"></div>
-          <div className="trust-item">
+          <div className="trust-divider reveal stagger-2"></div>
+          <div className="trust-item reveal stagger-3">
             <h3>4.8★</h3>
             <p>Google Rated</p>
           </div>
-          <div className="trust-divider"></div>
-          <div className="trust-item">
+          <div className="trust-divider reveal stagger-4"></div>
+          <div className="trust-item reveal stagger-4">
             <h3>2</h3>
             <p>Clinics in Faridabad</p>
           </div>
@@ -66,13 +66,13 @@ const Home = () => {
       <section className="section about-snapshot">
         <div className="container">
           <div className="grid grid-cols-2 align-center">
-            <div className="about-image-wrapper">
+            <div className="about-image-wrapper reveal">
               <img src="./cicil.jpg" alt="Dr. Cicil Mathur" className="about-image" />
               <div className="experience-badge">
                 Ex-Safdarjung Hospital Surgeon
               </div>
             </div>
-            <div className="about-text">
+            <div className="about-text reveal stagger-2">
               <h2>Meet Dr. Cicil Mathur</h2>
               <h4 className="subtitle">BDS, Advanced General Dentistry</h4>
               <p>
@@ -90,7 +90,7 @@ const Home = () => {
       {/* Services Snippet */}
       <section className="section section-grey services-snippet">
         <div className="container">
-          <h2 className="section-title">Our Premium <span>Services</span></h2>
+          <h2 className="section-title reveal">Our Premium <span>Services</span></h2>
           <div className="grid grid-cols-3">
             {[
               { title: "Dental Implants", desc: "Permanent, life-like tooth replacement with titanium implants" },
@@ -100,7 +100,7 @@ const Home = () => {
               { title: "Crowns & Bridges", desc: "Durable restorations that look and feel like natural teeth" },
               { title: "Tooth Coloured Filling", desc: "Natural-looking composite fillings that blend perfectly" }
             ].map((service, i) => (
-              <div key={i} className="service-card text-center">
+              <div key={i} className={`service-card text-center reveal stagger-${(i % 3) + 1}`}>
                 <div className="service-icon-wrap">
                   <svg viewBox="0 0 24 24" width="32" height="32"><path fill="#C4A165" d="M12 2c-3 0-5.5 2-6 5.5-.3 2.1.2 4.1 1.5 5.5l1.5 10c.2 1.1 1.5 1.5 2.2.6L12 21l.8 2.6c.7.9 2 .5 2.2-.6l1.5-10c1.3-1.4 1.8-3.4 1.5-5.5C17.5 4 15 2 12 2z"/></svg>
                 </div>
@@ -119,17 +119,17 @@ const Home = () => {
       <section className="section why-choose-us">
         <div className="container">
           <div className="grid grid-cols-2 align-center">
-            <div>
+            <div className="reveal">
               <h2 className="section-title" style={{ textAlign: 'left' }}>Why Choose <span>Dr. Cicil's</span> Smile Center?</h2>
               <p style={{ marginBottom: '30px' }}>We combine advanced dental technology with a gentle, patient-first approach to give you the smile you deserve.</p>
               <ul className="feature-list">
-                <li><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Ex-Safdarjung Hospital Experience</strong> - Trust your smile with a highly qualified professional.</li>
-                <li><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Advanced Digital X-Ray (RVG)</strong> - For precise, low-radiation diagnosis.</li>
-                <li><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>2 Conveniently Located Clinics</strong> - Serving you in Dayalbagh & Sector 45.</li>
-                <li><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Personalised Oral Care</strong> - Custom treatment plans for every patient.</li>
+                <li className="reveal stagger-1"><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Ex-Safdarjung Hospital Experience</strong> - Trust your smile with a highly qualified professional.</li>
+                <li className="reveal stagger-2"><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Advanced Digital X-Ray (RVG)</strong> - For precise, low-radiation diagnosis.</li>
+                <li className="reveal stagger-3"><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>2 Conveniently Located Clinics</strong> - Serving you in Dayalbagh & Sector 45.</li>
+                <li className="reveal stagger-4"><CheckCircle2 color="#C4A165" className="feature-icon" /> <strong>Personalised Oral Care</strong> - Custom treatment plans for every patient.</li>
               </ul>
             </div>
-            <div className="why-image">
+            <div className="why-image reveal stagger-2">
               <img src="./cicil10.jpg" alt="Dental Care in Faridabad" style={{ borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} />
             </div>
           </div>

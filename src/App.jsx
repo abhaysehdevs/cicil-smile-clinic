@@ -22,8 +22,27 @@ function ScrollToTop() {
 }
 
 function App() {
+  // Global scroll reveal observer
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      revealElements.forEach((el) => observer.unobserve(el));
+    };
+  }); // Run on every render to catch newly mounted components
+
   return (
     <div className="app-container">
+      <div className="bg-overlay"></div>
       <ScrollToTop />
       <Navbar />
       <main className="main-content">

@@ -25,9 +25,7 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <Link to="/" className="brand">
-          <svg className="tooth-icon" viewBox="0 0 24 24" width="28" height="28">
-            <path fill="#C4A165" d="M12 2c-3 0-5.5 2-6 5.5-.3 2.1.2 4.1 1.5 5.5l1.5 10c.2 1.1 1.5 1.5 2.2.6L12 21l.8 2.6c.7.9 2 .5 2.2-.6l1.5-10c1.3-1.4 1.8-3.4 1.5-5.5C17.5 4 15 2 12 2z"/>
-          </svg>
+          <img src="./favicon_io/android-chrome-192x192.png" alt="Logo" width="40" height="40" style={{ borderRadius: '8px', boxShadow: '0 0 10px rgba(196,161,101,0.5)' }} />
           <div className="brand-text">
             <span>DR. CICIL'S</span>
             <span className="brand-subtitle">SMILE CENTER</span>

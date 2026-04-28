@@ -35,7 +35,7 @@ const Gallery = () => {
               <h2 className="section-title text-left" style={{textAlign: 'left', marginBottom: '30px'}}>{section.category}</h2>
               <div className="gallery-grid">
                 {section.images.map((img, i) => (
-                  <div key={i} className="gallery-item">
+                  <div key={i} className={`gallery-item reveal stagger-${(i % 4) + 1}`}>
                     <img src={img} alt={`${section.category} view ${i+1}`} loading="lazy" />
                     <div className="gallery-overlay">
                       <div className="gallery-icon">+</div>

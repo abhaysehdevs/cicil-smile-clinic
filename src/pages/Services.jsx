@@ -36,7 +36,7 @@ const Services = () => {
         <div className="container">
           <div className="grid grid-cols-3 services-grid">
             {SERVICES_DATA.map((service, index) => (
-              <div key={service.id} className={`service-item ${service.highlight ? 'highlighted' : ''}`}>
+              <div key={service.id} className={`service-item reveal stagger-${(index % 3) + 1} ${service.highlight ? 'highlighted' : ''}`}>
                 <div className="service-icon-box">
                   <CheckCircle2 color={service.highlight ? '#FFFFFF' : '#C4A165'} size={28} />
                 </div>
