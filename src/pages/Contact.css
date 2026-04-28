@@ -1,0 +1,60 @@
+.contact-grid {
+  gap: 60px;
+}
+
+.contact-info-panel h3 {
+  color: var(--primary-gold);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.info-block {
+  margin-bottom: 40px;
+}
+
+.contact-info-panel .info-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.contact-info-panel .info-row.align-center {
+  align-items: center;
+}
+
+.contact-info-panel .info-icon {
+  color: var(--primary-gold);
+  margin-right: 20px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.contact-info-panel p {
+  line-height: 1.6;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.contact-info-panel a {
+  color: var(--dark-charcoal);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-info-panel a:hover {
+  color: var(--primary-gold);
+}
+
+.contact-form-panel {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
